@@ -1,1 +1,22 @@
-body,div,h5,h6,html,li,p,ul{margin:0;padding:0}body{padding-bottom:56px}#app .Footer{position:fixed;bottom:0;background:#fff;z-index:100;width:100%}#app .share-item{margin:20px 10px}
+html, body, div, h5, h6, p, ul, li {
+  margin: 0px;
+  padding: 0px; }
+
+body {
+  padding-bottom: 56px; }
+
+#app .Footer {
+  position: fixed;
+  bottom: 0;
+  background: white;
+  z-index: 100;
+  width: 100%; }
+
+#app .share-item {
+  margin: 20px 10px; }
+
+#app .progress {
+  text-align: center;
+  margin-top: 30px; }
+
+/*# sourceMappingURL=main.css.map*/
