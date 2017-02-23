@@ -56,4 +56,17 @@ body{
 			bottom: 20px;
 		}
 	}	
+
+	.plan{
+		.plan-main{
+			height: 100%;
+		}
+
+		#map-bg{
+			height: 100%;
+			width: 100%;
+			position: absolute;
+		}
+
+	}
 }
