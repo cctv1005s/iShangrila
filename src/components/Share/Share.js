@@ -3,8 +3,13 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 class Share extends React.Component{
+  readMore(){
+    window.location.href = '/#/share/'+this.props.share.key;
+  }
+
   render(){
     var share = this.props.share;
+    var self = this;
     return (
       <Card className="share-item">
         <CardHeader
@@ -26,7 +31,7 @@ class Share extends React.Component{
         </CardText>
         
         <CardActions>
-          <FlatButton label="更多" />
+          <FlatButton label="更多" onClick={function(){ self.readMore(); }}/>
           <FlatButton label="收藏" />
         </CardActions>
       </Card>

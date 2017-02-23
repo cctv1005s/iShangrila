@@ -2,12 +2,16 @@ html, body, div, h5, h6, p, ul, li {
     margin: 0px;
     padding: 0px;
 }
-
 body{
 	padding-bottom:56px; 
 }
-
 #app {
+	.AppBar{
+		position: fixed !important;
+	}
+	.AppBar-block{
+		height: 64px;
+	}
 	.Footer{
 		position: fixed;
 		bottom: 0;
@@ -24,4 +28,32 @@ body{
 		text-align: center;
 		margin-top: 30px;
 	}
+
+	.share-more-paper{
+		background: white;
+		overflow: hidden;
+		padding: 15px;
+		font-size: 14px;
+    	font-family: Arial,"Lucida Grande","Microsoft Yahei","Hiragino Sans GB","Hiragino Sans GB W3",SimSun,"PingFang SC",STHeiti;
+    	_font-family: Tahoma,Arial,Helvetica,STHeiti;
+    	color: #666;
+		img{max-width: 100%;}
+		.tips-box {
+		    margin: 35px 0;
+		    border: 1px solid #ffe3b7;
+		    background-color: #fff5e5;
+		    padding: 15px 20px;
+		    line-height: 26px;
+		    color: #333;
+		    font-size: 14px;
+		}
+	}
+
+	.shareMore{
+		.downloadBtn{
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+		}
+	}	
 }
