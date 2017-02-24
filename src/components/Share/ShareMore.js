@@ -69,6 +69,7 @@ class ShareMore extends React.Component{
           <FloatingActionButton 
             className="downloadBtn" 
             href={this.state.imageUrl}
+            download="plan.png"
             target="_blank"
           >
             <ArrowDown />

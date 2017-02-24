@@ -7,6 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from '../AppBar';
 
 import RaisedButton from 'material-ui/RaisedButton';
+import MapIcon from 'material-ui/svg-icons/maps/map.js';
 
 class PlanMain extends React.Component{
     constructor(e){
@@ -34,10 +35,11 @@ class PlanMain extends React.Component{
               <div className="plan-main">
                 <div id="map-bg"></div>
                 <RaisedButton
-                  href="https://github.com/callemall/material-ui"
-                  target="_blank"
+                  className="plan-make"
+                  href="/#/plan/planMore"
                   label="定制个人旅行计划"
                   secondary={true}
+                  icon={<MapIcon></MapIcon>}
                 />
               </div>
               <Footer />
