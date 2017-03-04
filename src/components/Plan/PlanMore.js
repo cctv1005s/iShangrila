@@ -6,6 +6,14 @@ import $ from 'jquery';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from '../AppBar';
 
+
+
+import {
+  Step,
+  Stepper,
+  StepLabel,
+} from 'material-ui/Stepper';
+
 class PlanMore extends React.Component{
     constructor(e){
         super(e);
@@ -19,6 +27,7 @@ class PlanMore extends React.Component{
     }
 
     render(){
+        var stepIndex = 0;
         return (
           <MuiThemeProvider>
             <div className="plan">
@@ -26,9 +35,21 @@ class PlanMore extends React.Component{
               　className="AppBar"
               　title="我的香格里拉"
               />
+              
               <div className="plan-more">
-
+                <Stepper activeStep={stepIndex}>
+                  <Step>
+                    <StepLabel>填入信息</StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel>选择地点</StepLabel>
+                  </Step>
+                  <Step>
+                    <StepLabel>完成</StepLabel>
+                  </Step>
+                </Stepper>
               </div>
+
             </div>
           </MuiThemeProvider>
         )
