@@ -39,7 +39,7 @@ app.use(session({
     saveUninitialized:false
 }));
 
-
+app.locals.config = config;
 
 app.use('/',api);
 
@@ -78,13 +78,6 @@ app.use(function(err, req, res, next) {
 var port = config.port;
 app.listen(port||3000);
 console.log('app listen on ' + port);
-
-
-
-
-
-
-
 
 
 

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool --progress ",
+    "dev": "webpack-dev-server --devtool --progress && node app",
     "build": "webpack -p",
-    "start": "webpack -p && export NODE_ENV=production && node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

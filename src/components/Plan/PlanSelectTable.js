@@ -6,7 +6,7 @@ import AppBar from '../AppBar';
 
 //配置项
 var cofig = [
-  
+
 ];
 
 class PlanSelectTable extends React.Component{
@@ -16,7 +16,10 @@ class PlanSelectTable extends React.Component{
 
     render(){
         return (
-        )
+        	<div>
+        		
+        	</div>
+        );
     };
 }
 

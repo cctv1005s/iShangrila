@@ -30,10 +30,15 @@
   <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
   <meta name="msapplication-TileColor" content="#0e90d2">
-  <link rel="stylesheet" type="text/css" href="/main.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8888/main.css">
 <body>
     <div id="app"></div>
-    <script src="/bundle.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=vOpuWh4Hfx4EyYqgvOueK7APWrFsGoFF"></script>
+    <% 
+    var base_url = "";
+    if(config.env === 'development')
+        base_url = 'http://localhost:8888';
+    %>
+    <script src="<%- base_url %>/bundle.js"></script>
 </body>
-
 </html>

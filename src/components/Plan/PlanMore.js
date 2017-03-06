@@ -6,6 +6,8 @@ import $ from 'jquery';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from '../AppBar';
 
+//
+import SelectTable from './PlanSelectTable.js';
 
 
 import {
@@ -17,9 +19,6 @@ import {
 class PlanMore extends React.Component{
     constructor(e){
         super(e);
-        this.state = {
-          share:[]
-        };
     }
 
     componentDidMount(){
@@ -34,6 +33,7 @@ class PlanMore extends React.Component{
               <AppBar 
               　className="AppBar"
               　title="我的香格里拉"
+                type="back"
               />
               
               <div className="plan-more">

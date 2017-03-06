@@ -81,6 +81,7 @@ class ShareMore extends React.Component{
               <AppBar 
               　className="AppBar"
               　title="我的香格里拉"
+                type="back"
               />
               <div 
                 className="share-more-paper" 
