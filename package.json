@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool --progress && node app",
+    "dev": "webpack-dev-server --devtool --progress & node app",
     "build": "webpack -p",
     "start": "node app.js"
   },

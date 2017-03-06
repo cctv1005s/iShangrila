@@ -6,7 +6,7 @@ import $ from 'jquery';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from '../AppBar';
 
-//
+//年龄，性别，资金选择框
 import SelectTable from './PlanSelectTable.js';
 
 
@@ -49,7 +49,9 @@ class PlanMore extends React.Component{
                   </Step>
                 </Stepper>
               </div>
-
+              
+              <SelectTable />
+              
             </div>
           </MuiThemeProvider>
         )
