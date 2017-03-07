@@ -1,4 +1,5 @@
 {
 	"port":3070,
-	"env":"development"
+	"env":"development",
+	"baiduMapKey":"vOpuWh4Hfx4EyYqgvOueK7APWrFsGoFF"
 }

@@ -4,6 +4,10 @@ var request = require('request');
 var EventProxy = require('eventproxy');
 var cheerio = require('cheerio');
 var tools = require('./tools.js');
+var config = require('../config');
+
+//百度地图相关工具
+var place_tools = require('./place_tools.js');
 
 router.get('/',function(req,res,next){
     res.render('index');
@@ -32,5 +36,14 @@ router.get('/share/:key',function(req,res,next){
     return res.send({});
 });
 
+//获取香格里拉的景点
+router.get('/place',function(req,res,next){
+    var key = config['baiduMapKey'];
+    var info = req.query;
+    info.ak = key;
+    place_tools.getPlace(info,function(err,body){
+        res.send(body);
+    });
+});
 
 module.exports = router;

@@ -8,6 +8,8 @@ import AppBar from '../AppBar';
 
 //年龄，性别，资金选择框
 import SelectTable from './PlanSelectTable.js';
+//选择旅游出行的景点
+import SelectPlace from './PlanSelectPlace.js';
 
 
 import {
@@ -19,10 +21,27 @@ import {
 class PlanMore extends React.Component{
     constructor(e){
         super(e);
+        this.state = {
+          stepIndex:0
+        };
     }
 
-    componentDidMount(){
-      
+    handleNext(){
+      //刷新一下进度
+      this.setState({
+        stepIndex:++this.state.stepIndex
+      });
+    }
+
+    renderSelect(fn){
+      //通过一个数组来绑定上面的显示与下面的表单之间的关系
+      var Dash = [
+        (<SelectTable nextStep={fn} />),
+        (<SelectPlace nextStep={fn} />)
+      ];
+
+      //
+      return Dash[this.state.stepIndex];
     }
 
     render(){
@@ -37,7 +56,7 @@ class PlanMore extends React.Component{
               />
               
               <div className="plan-more">
-                <Stepper activeStep={stepIndex}>
+                <Stepper activeStep={this.state.stepIndex}>
                   <Step>
                     <StepLabel>填入信息</StepLabel>
                   </Step>
@@ -50,7 +69,7 @@ class PlanMore extends React.Component{
                 </Stepper>
               </div>
               
-              <SelectTable />
+              {this.renderSelect(this.handleNext.bind(this))}
               
             </div>
           </MuiThemeProvider>

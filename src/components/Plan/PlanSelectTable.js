@@ -1,3 +1,6 @@
+/**
+ * 用于用户填入基本信息的模块，用户在此应该填入，年龄，性别，和旅游资金
+ */
 import React from 'react';
 import $ from 'jquery';
 
@@ -53,6 +56,7 @@ class PlanSelectTable extends React.Component{
                 backgroundColor="#a4c639"
                 label="下一步"
                 className="select-table-next"
+                onClick={this.props.nextStep}
                 />
         	</Paper>
         );
