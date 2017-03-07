@@ -2,6 +2,7 @@ var request = require('request');
 var EventProxy = require('eventproxy');
 var util = require('util');
 var cheerio = require('cheerio');
+var fs = require('fs');
 
 const api_url = 'http://api.map.baidu.com/place/v2/search?query=%s&region=%s&page_num=%s&city_limit=true&output=json&ak=%s';
 /**
@@ -25,11 +26,18 @@ var getImgByQ = function(q,cb){
         return cb('关键词不存在');
     //必应搜图网址
     var bing_url = 'http://cn.bing.com/images/search?q=%s';
-    var search_url = util.format(bing_url,q);
+    var search_url = util.format(bing_url,encodeURI(q));
     request(search_url,function(err,req,body){
+        if(err)
+            return cb(err);
         //抓取第一张图片
-        var $ = cheerio.load(body);
-        
+        try{
+            var $ = cheerio.load(body);
+            var src = $($('.cico > img')[0]).attr('src');
+            cb(null,src);
+        }catch(e){
+            cb(e);
+        }
     });
 }
 
@@ -39,18 +47,19 @@ var getImgByQ = function(q,cb){
  */
 var getAllImg = function(body,cb){
     try{
-        var data = JSON.parse(body);
+        body = JSON.parse(body);
+        var data = body.results;
         var ep = new EventProxy();
         data.forEach(function(ele){
             var q = ele.name;
             getImgByQ(q,function(err,img_url){
                 ele.img_url = img_url;
-                ep.emit('img',img_url);
+                ep.emit('img',ele);
             });
         });
         //抓取每一个项的图片
         ep.after('img',data.length,function(items){
-            body.result = items;
+            body.results = items;
             cb(null,JSON.stringify(body));
         });
     }catch(e){
@@ -73,6 +82,3 @@ exports.getPlace = function(info,cb){
         });
     });
 };
-
-
-

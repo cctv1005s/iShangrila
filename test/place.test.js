@@ -16,6 +16,16 @@ describe('百度地图api的测试',function(){
             if(err)
                 throw Error(err);
             expect(body).to.be.a('string');
+            
+            body = JSON.parse(body);
+            expect(body).to.be.a('object');
+            
+            var results = body.results;
+            expect(results).to.be.a('array');
+            
+            results.forEach(function(ele){
+                expect(ele).to.include.keys('img_url');
+            });
             done();
         });
     });
