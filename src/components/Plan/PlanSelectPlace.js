@@ -6,6 +6,9 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
 import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
+import CircularProgress from 'material-ui/CircularProgress';
+
+import RaisedButton from 'material-ui/RaisedButton';
 
 //用于给用户选择旅游景点的地方
 var styles = {
@@ -16,86 +19,93 @@ var styles = {
   },
   gridList: {
     width: 500,
-    height: 450,
     overflowY: 'auto',
   },
 };
 
-const tilesData = [
-  {
-    img: 'images/grid-list/00-52-29-429_640.jpg',
-    title: 'Breakfast',
-    author: 'jill111',
-  },
-  {
-    img: 'images/grid-list/burger-827309_640.jpg',
-    title: 'Tasty burger',
-    author: 'pashminu',
-  },
-  {
-    img: 'images/grid-list/camera-813814_640.jpg',
-    title: 'Camera',
-    author: 'Danson67',
-  },
-  {
-    img: 'images/grid-list/morning-819362_640.jpg',
-    title: 'Morning',
-    author: 'fancycrave1',
-  },
-  {
-    img: 'images/grid-list/hats-829509_640.jpg',
-    title: 'Hats',
-    author: 'Hans',
-  },
-  {
-    img: 'images/grid-list/honey-823614_640.jpg',
-    title: 'Honey',
-    author: 'fancycravel',
-  },
-  {
-    img: 'images/grid-list/vegetables-790022_640.jpg',
-    title: 'Vegetables',
-    author: 'jill111',
-  },
-  {
-    img: 'images/grid-list/water-plant-821293_640.jpg',
-    title: 'Water plant',
-    author: 'BkrmadtyaKarki',
-  },
-];
-
+//加载动画
+var progress = (<div className="progress"><CircularProgress /></div>);
 
 class PlanSelectPlace extends React.Component{
     constructor(e){
         super(e);
+        this.state={
+          placeData:[],
+          starPlace:[]
+        };
     }
     
     componentDidMount(){
-        //抓取景点数据
+        //获取景点数据
+        var self = this;
         $.get('/place?q=0',function(data){
             var data = JSON.parse(data);
-            console.log(data);
+            self.setState({
+              placeData:data.results
+            });
         });
     }
 
+    /**
+     * 用于处理选择的景点的点击
+     * 
+     * @param key {string} 景点的名称
+    */
+    handleStar(name){
+      this.state.starPlace.push(name);
+      this.setState({});
+    }
+    
+    /**
+     * 查看某一个元素是否被选中
+     * 
+     * @param name {string} 景点的名称
+    */
+    isStar(name){
+      var p = this.state.starPlace;
+      for(var i in p){
+        if(p[i] == name)
+          return true;
+      }
+      return false;
+    }
+
     render(){
+        var self = this; 
         return (
             <div style={styles.root}>
+                {
+                  this.state.placeData.length == 0?progress:(<div></div>)
+                }
                 <GridList
                 cellHeight={180}
                 style={styles.gridList}
                 >
-                <Subheader>December</Subheader>
-                {tilesData.map((tile) => (
+                {this.state.placeData.map((tile) => (
                     <GridTile
                     key={tile.img}
-                    title={tile.title}
-                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                    title={tile.name}
+                    onClick={function(e){
+                      self.handleStar(tile.name);
+                    }} 
+                    actionIcon={
+                      <IconButton>
+                      <StarBorder color={ this.isStar(tile.name)?"rgb(0, 188, 212)":"white"} />
+                      </IconButton>
+                    }
                     >
-                    <img src={tile.img} />
+                    <img src={tile.img_url} />
                     </GridTile>
                 ))}
                 </GridList>
+
+                <RaisedButton
+                backgroundColor="#a4c639"
+                label="下一步"
+                className="select-table-next"
+                onClick={this.props.nextStep}
+                />
+                
             </div>
         );
     };

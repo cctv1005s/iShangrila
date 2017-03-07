@@ -35,6 +35,7 @@ class PlanMore extends React.Component{
 
     renderSelect(fn){
       //通过一个数组来绑定上面的显示与下面的表单之间的关系
+      var key = 0;
       var Dash = [
         (<SelectTable nextStep={fn} />),
         (<SelectPlace nextStep={fn} />)

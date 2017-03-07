@@ -8,6 +8,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from '../AppBar';
 
 import CircularProgress from 'material-ui/CircularProgress';
+
 class App extends React.Component{
     constructor(e){
         super(e);
