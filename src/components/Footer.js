@@ -10,6 +10,9 @@ const recentsIcon = <MessageIcon />;
 const favoritesIcon = <FavoritesIcon />;
 const nearbyIcon = <IconLocationOn />;
 
+import util from 'util';
+
+
 var menu = ['bbs','share','plan'];
 
 class Footer extends React.Component {
@@ -35,6 +38,11 @@ class Footer extends React.Component {
   }
 
   select(index){
+    if(index == 0){
+      var location = window.location;
+      var {protocol,hostname} = location;
+      return window.location.href = util.format("%s//%s:3000",protocol,hostname);
+    }
   	window.location.href = '#/'+menu[index];
     this.setState({selectedIndex: index});
   }

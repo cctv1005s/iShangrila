@@ -105,7 +105,6 @@ class PlanSelectPlace extends React.Component{
                 className="select-table-next"
                 onClick={this.props.nextStep}
                 />
-                
             </div>
         );
     };

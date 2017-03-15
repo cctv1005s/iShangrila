@@ -10,7 +10,8 @@ import AppBar from '../AppBar';
 import SelectTable from './PlanSelectTable.js';
 //选择旅游出行的景点
 import SelectPlace from './PlanSelectPlace.js';
-
+//生成我的计划
+import PlanPerson from './PlanPerson.js';
 
 import {
   Step,
@@ -38,7 +39,8 @@ class PlanMore extends React.Component{
       var key = 0;
       var Dash = [
         (<SelectTable nextStep={fn} />),
-        (<SelectPlace nextStep={fn} />)
+        (<SelectPlace nextStep={fn} />),
+        (<PlanPerson />)
       ];
 
       //
