@@ -46,4 +46,29 @@ router.get('/place',function(req,res,next){
     });
 });
 
+var plan_tools = require('./plan_tools.js');
+
+router.post('/plan',function(req,res,next){
+    //获取景点名称参数
+    var keys = req.body.keys;
+    plan_tools
+    .get()
+    .then(function(data){
+        var _d = [];
+        //转换成json数据
+        for(var i = 0;i < data.length ;i++){
+            for(var j in keys){
+                if(data[i].overviewScenery.indexOf(keys[j])){
+                    _d.push(data[i]);
+                    break;
+                }
+            }
+        }
+        res.send(_d);
+    })
+    .catch(function(err){
+        next(err);
+    });
+});
+
 module.exports = router;

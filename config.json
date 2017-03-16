@@ -1,6 +1,6 @@
 {
 	"port":3071,
-	"env":"production",
+	"env":"development",
 	"baiduMapKey":"vOpuWh4Hfx4EyYqgvOueK7APWrFsGoFF",
 	"host":"localhost"
 }

@@ -23,11 +23,13 @@ class PlanMore extends React.Component{
     constructor(e){
         super(e);
         this.state = {
-          stepIndex:0
+          stepIndex:0,
+          stepData:[]
         };
     }
 
-    handleNext(){
+    handleNext(data){
+      this.state.stepData.push(data);
       //刷新一下进度
       this.setState({
         stepIndex:++this.state.stepIndex
@@ -40,9 +42,8 @@ class PlanMore extends React.Component{
       var Dash = [
         (<SelectTable nextStep={fn} />),
         (<SelectPlace nextStep={fn} />),
-        (<PlanPerson />)
+        (<PlanPerson stepData={this.state.stepData}/>)
       ];
-
       //
       return Dash[this.state.stepIndex];
     }

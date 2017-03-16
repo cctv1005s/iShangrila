@@ -17,9 +17,6 @@ class App extends React.Component{
       this.state.IconsFn = {
         'back':function(e){
           history.go(-1);
-        },
-        'menu':function(e){
-          //召唤菜单
         }
       }
     }
@@ -38,7 +35,11 @@ class App extends React.Component{
 
     handleClick(e){
         //执行点击函数
-        this.state.IconsFn[this.props.type](e);
+        if(this.props.type)
+          return this.state.IconsFn[this.props.type](e);
+        
+        if(this.props.handleClick)
+          this.props.handleClick();
     }
 }
 

@@ -103,7 +103,7 @@ class PlanSelectPlace extends React.Component{
                 backgroundColor="#a4c639"
                 label="下一步"
                 className="select-table-next"
-                onClick={this.props.nextStep}
+                onClick={()=>this.props.nextStep(this.state.starPlace)}
                 />
             </div>
         );

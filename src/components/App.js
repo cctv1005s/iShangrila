@@ -8,6 +8,8 @@ import ShareMore from './Share/ShareMore.js';
 import PlanMain from './Plan/PlanMain.js';
 import PlanMore from './Plan/PlanMore.js'
 
+import About from './About.js'
+
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -19,5 +21,6 @@ ReactDom.render((
         <Route path='/share/:key' component={ShareMore}></Route>
         <Route path='/plan' component={PlanMain}></Route>
         <Route path='/plan/planMore' component={PlanMore}></Route>
+        <Route path='/about' component={About}></Route>
     </Router>
 ), document.getElementById('app'));
